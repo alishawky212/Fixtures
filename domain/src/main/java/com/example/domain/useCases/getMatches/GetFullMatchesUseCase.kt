@@ -13,33 +13,44 @@ class GetFullMatchesUseCase @Inject constructor(
     private val favoriteRepository: FavoriteRepository,
     private val calendar: Calendar
 ) : GetMatchesStrategy {
-    override fun get(): Flowable<List<Match>> = Flowable.combineLatest(
-        matchesRepository.getMatches().toFlowable(),
-        favoriteRepository.getFavoriteMatches(),
-        BiFunction { matches, favorites ->
-            matches.forEach {
-                if (favorites.contains(it)){
-                    it.isFavorite = true
-                    favoriteRepository.updateMatch(it).subscribe()
-                }else{
-                    it.isFavorite = false
+    override fun get(): Flowable<List<Match>> {
+        return Flowable.combineLatest<List<Match>, List<Match>, List<Match>>(
+            matchesRepository.getMatches().toFlowable().zipWith(
+                matchesRepository.getTeamById().toFlowable(),
+                BiFunction { matches, team ->
+                    matches.map { match->
+                        match.homeTeam.img = team.first { match.homeTeam.id == it.id}.crestUrl
+                        match.awayTeam.img = team.first {match.awayTeam.id == it.id}.crestUrl
+                    }
+                    return@BiFunction matches
+                }),
+            favoriteRepository.getFavoriteMatches().distinctUntilChanged(),
+            BiFunction { matches, favorites ->
+                matches.forEach {
+                    if (favorites.contains(it)) {
+                        it.isFavorite = true
+                        favoriteRepository.updateMatch(it).subscribe()
+                    } else {
+                        it.isFavorite = false
+                    }
                 }
-            }
-            val filteredMatches = matches.filter {
-                val date = it.date
-                val s = Calendar.getInstance()
-                s.time = date
-                s.set(Calendar.HOUR_OF_DAY,0)
-                s.set(Calendar.MINUTE,0)
-                s.set(Calendar.SECOND,0)
+                val filteredMatches = matches.filter {
+                    val date = it.date
+                    val s = Calendar.getInstance()
+                    s.time = date
+                    s.set(Calendar.HOUR_OF_DAY, 0)
+                    s.set(Calendar.MINUTE, 0)
+                    s.set(Calendar.SECOND, 0)
 
-                calendar.set(Calendar.HOUR_OF_DAY,0)
-                calendar.set(Calendar.MINUTE,0)
-                calendar.set(Calendar.SECOND,0)
-                !before(s,calendar)
-            }
-            filteredMatches
-        })
+                    calendar.set(Calendar.HOUR_OF_DAY, 0)
+                    calendar.set(Calendar.MINUTE, 0)
+                    calendar.set(Calendar.SECOND, 0)
+                    !before(s, calendar)
+                }
+                filteredMatches
+            })
+    }
+
 
     fun before(c1: Calendar, c2: Calendar): Boolean {
         val c1Year = c1.get(Calendar.YEAR)

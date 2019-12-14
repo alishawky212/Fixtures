@@ -19,7 +19,6 @@ import javax.inject.Singleton
 
 private const val AUTHORIZATION_KEY = "X-Auth-Token"
 private const val BASE_URL = "https://api.football-data.org/v2/"
-private const val API_KEY = "1e4aa77923b44c09a94513753b8d670b"
 @Module
 class NetworkModule {
     @Provides
