@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        config {
+            storeFile rootProject.file('keyStore.jks')
+            storePassword 'password'
+            keyAlias = 'MatchesAlias'
+            keyPassword 'password'
+        }
+    }
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId "com.example.fixturesapplication"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes.each {
+        buildTypes.each {
+            it.buildConfigField 'String', 'API_KEY', "\"1e4aa77923b44c09a94513753b8d670b\""
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.kotlin
+    implementation libraries.appCompat
+    implementation libraries.material
+    implementation libraries.likeButton
+    implementation libraries.rxBindingAppCompat
+    implementation libraries.dagger
+    implementation libraries.daggerSupport
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    kapt libraries.daggerProcessor
+    kapt libraries.daggerAndroidApt
+    implementation libraries.viewPager2
+    implementation libraries.okhttpLogger
+    implementation libraries.annotations
+    implementation libraries.retrofitRxAdapter
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverter
+    implementation libraries.roomDataBase
+    implementation libraries.shimmerView
+    implementation libraries.shapOfView
+    kapt libraries.roomCompiler
+    implementation libraries.navComponent
+    implementation libraries.navComponentUi
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.recyclerview
+    implementation libraries.corektx
+    implementation libraries.geson
+    implementation libraries.constraintLayout
+    testImplementation libraries.mockito_kotlin
+    testImplementation libraries.junit
+    testImplementation libraries.achCore
+    androidTestImplementation libraries.roomTest
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.espressoCore
+    testImplementation libraries.testRules
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
+    implementation libraries.ifecycleextensions
+    implementation libraries.recyclerviewanimators
+}

@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.rxJava
+    implementation libraries.inject
+    testImplementation libraries.junit
+    testImplementation libraries.assertj_core
+    testImplementation libraries.mockito_kotlin
+    implementation libraries.kotlin
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath libraries.kotlin
+    }
+}
+repositories {
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = versions.java
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = versions.java
+    }
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fixtures Application</string>
+
+    <string name="matches_label">Matches</string>
+    <string name="favorite_label">Favorites</string>
+    <string name="live">Live</string>
+</resources>

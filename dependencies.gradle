@@ -1,0 +1,128 @@
+ext {
+    versions = [
+            // For project configuration
+            java                : JavaVersion.VERSION_1_8,
+            minSdk              : 21,
+            compileSdk          : 29,
+            targetSdk           : 29,
+            appCompat           : '1.0.2',
+            inject                : '1',
+            buildTools          : '29.0.2',
+            kotlin_version      : '1.3.50',
+
+            likeButton          : '0.2.3',
+
+            retrofit            : '2.6.0',
+            retrofitAdapter     : '2.6.0',
+            jakewhartonAdapter  : '1.0.0',
+            geson               : '2.8.5',
+            navVersion          : '2.1.0-alpha05',
+
+            retrofitRxAdapter     :'2.4.0',
+
+            // For app
+
+            constraintLayout    : '1.1.3',
+            recyclerview        : '1.1.0-alpha06',
+
+            nav_version          : "2.1.0",
+
+            gcm                 : '16.1.0',
+            material            : '1.1.0-alpha07',
+
+            dagger              : '2.23.1',
+
+            rxAndroid           : '2.1.1',
+
+            rxJava              : '2.2.8',
+            rxBindingAppCompat  : '3.0.0-alpha2',
+
+            okhttp              : '4.0.0-alpha02',
+
+            room_version        : "2.2.1",
+
+            shimmer_version     : "0.5.0",
+
+            shapOfViewVersion   : "1.4.6",
+
+            // For testing
+            junit               : '4.12',
+            coreTest            : '1.2.0',
+            mockito             : '2.28.2',
+            testRules           : '1.2.0',
+            extJunit            : '1.1.1',
+            testRunner          : '1.2.0',
+
+            truth               : '0.42',
+            espresso            : '3.2.0',
+            dexter              : '5.0.0',
+            stackimageview      : '0.0.6',
+            assertj_core        : '3.9.1',
+            mockito_kotlin      : "1.5.0",
+            archCore            : "2.0.0",
+            recyclerviewanimators : "2.3.0"
+    ]
+    libraries = [
+            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin_version}",
+
+            retrofit           : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            inject                : "javax.inject:javax.inject:${versions.inject}" ,
+            retrofitConverter  : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+            annotations           : "com.android.support:support-annotations:${versions.appCompat}",
+            geson              : "com.google.code.gson:gson:${versions.geson}",
+            retrofitAdapter    : "com.squareup.retrofit2:adapter-rxjava:${versions.retrofitAdapter}",
+
+            material           : "com.google.android.material:material:${versions.material}",
+            likeButton         : "com.github.jd-alexander:LikeButton:${versions.likeButton}",
+
+            shimmerView          : "com.facebook.shimmer:shimmer:${versions.shimmer_version}",
+            shapOfView          : "com.github.florent37:shapeofview:${versions.shapOfViewVersion}",
+
+            navComponent         : "androidx.navigation:navigation-fragment-ktx:${versions.nav_version}",
+            navComponentUi       : "androidx.navigation:navigation-ui-ktx:${versions.nav_version}",
+            navSafeArgs          : "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.nav_version}",
+
+            appCompat          : "androidx.appcompat:appcompat:${versions.appCompat}",
+            corektx           : "androidx.core:core-ktx:${versions.appCompat}",
+            constraintLayout   : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+            recyclerview       : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
+            fragmentsKtx       : "androidx.fragment:fragment-ktx:${versions.androidKtx}",
+
+            roomDataBase       : "androidx.room:room-runtime:${versions.room_version}",
+            roomCompiler       :"androidx.room:room-compiler:${versions.room_version}",
+            rxJavaRoom         : "androidx.room:room-rxjava2:${versions.room_version}",
+
+            dagger             : "com.google.dagger:dagger:${versions.dagger}",
+            daggerSupport      : "com.google.dagger:dagger-android-support:${versions.dagger}",
+            daggerProcessor    : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            daggerAndroidApt   : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitRxAdapter",
+            ifecycleextensions: "androidx.lifecycle:lifecycle-extensions:$versions.archCore",
+            recyclerviewanimators : "jp.wasabeef:recyclerview-animators:$versions.recyclerviewanimators",
+
+
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
+            rxJava             : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+            rxBindingAppCompat : "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBindingAppCompat}",
+
+            okhttp             : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+            okhttpLogger       : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+            viewPager2         : "androidx.viewpager2:viewpager2:1.0.0-rc01",
+
+            // For testing
+            junit              : "junit:junit:${versions.junit}",
+            coreTest           : "androidx.test:core:${versions.coreTest}",
+            mockitoCore        : "org.mockito:mockito-core:${versions.mockito}",
+            mockito            : "org.mockito:mockito-android:${versions.mockito}",
+            testRules          : "androidx.test:rules:${versions.testRules}",
+            extJunit           : "androidx.test.ext:junit:${versions.extJunit}",
+            testRunner         : "androidx.test:runner:${versions.testRunner}",
+            espressoCore       : "androidx.test.espresso:espresso-core:${versions.espresso}",
+            espressoContrib    : "androidx.test.espresso:espresso-contrib:${versions.espresso}",
+            espressoIntents    : "androidx.test.espresso:espresso-intents:${versions.espresso}",
+            roomTest           : "androidx.room:room-testing:${versions.room_version}",
+            assertj_core       : "org.assertj:assertj-core:${versions.assertj_core}",
+            mockito_kotlin     : "com.nhaarman:mockito-kotlin:${versions.mockito_kotlin}",
+            achCore            : "androidx.arch.core:core-testing:${versions.archCore}"
+    ]
+}
