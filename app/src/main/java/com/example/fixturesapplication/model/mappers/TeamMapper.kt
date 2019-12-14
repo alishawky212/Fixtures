@@ -9,12 +9,14 @@ class TeamMapper @Inject constructor() {
     fun mapToPresentation(awayTeam: Team):TeamUIModel =
         TeamUIModel(
             id = awayTeam.id,
-            name = awayTeam.name
+            name = awayTeam.name,
+            teamImage = awayTeam.img
         )
 
     fun mapToDomain(awayTeam: TeamUIModel): Team =
         Team(
             id = awayTeam.id,
-            name = awayTeam.name
+            name = awayTeam.name,
+            img = awayTeam.teamImage
         )
 }
