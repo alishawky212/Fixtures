@@ -13,7 +13,7 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class, NetworkModule::class,
     SchedulersModule::class,FragmentBuilder::class,
     DbModule::class,FactoryModule::class,
-    RepositoryModule::class,DateModule::class,AppModule::class])
+    RepositoryModule::class,DateModule::class,AppModule::class,GlideModule::class])
 interface ApplicationComponent {
     fun inject(app: MyApplication)
     @Component.Builder

@@ -193,3 +193,13 @@ Tdomain/src/main/java/com/example/domain/useCases/getMatches/GetFullMatchesUseCa
 Sapp/src/androidTest/java/com/example/fixturesapplication/ExampleInstrumentedTest.kt,7/2/724b32e4892cbcdaf2ee4a9cf4549b2c0bbe43f8
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+k
+;data/src/main/java/com/example/data/models_dto/SeasonDTO.kt,7/6/76ecf883dd705551df50df7e84925c375cb0f90c
+j
+:domain/src/main/java/com/example/domain/models/FullTeam.kt,e/e/ee4302d4b518c8fecba1efafeb5ec7795d9b30e4
+m
+=data/src/main/java/com/example/data/mappers/FullTeamMapper.kt,1/4/14408b90b7d8122d065789e0d837928364ea8736
+m
+=data/src/main/java/com/example/data/models_dto/FullTeamDto.kt,0/3/0302f2d8d0c8a43e78b5d614204a6083cf664920
+s
+Cdata/src/main/java/com/example/data/models_dto/FullTeamsResponse.kt,c/2/c2191353c35e298888150c8c30889e82123b52be

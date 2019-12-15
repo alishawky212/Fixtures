@@ -8,12 +8,14 @@ class HomeTeamEntityMapper @Inject constructor() {
     fun mapHomeTeamToEnitiy(homeTeam: Team): HomeTeamEntity =
         HomeTeamEntity(
             homeTeamId = homeTeam.id,
-            homeTeamName = homeTeam.name
+            homeTeamName = homeTeam.name,
+            homeTeamImage = homeTeam.img
         )
 
     fun mapHomeTeamEntityToDomain(entity: HomeTeamEntity): Team =
         Team(
             id = entity.homeTeamId,
-            name = entity.homeTeamName
+            name = entity.homeTeamName,
+            img = entity.homeTeamImage
         )
 }

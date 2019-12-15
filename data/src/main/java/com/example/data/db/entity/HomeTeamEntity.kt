@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class HomeTeamEntity(
     @PrimaryKey
     val homeTeamId: Int,
-    val homeTeamName: String
+    val homeTeamName: String,
+    val homeTeamImage:String
 )

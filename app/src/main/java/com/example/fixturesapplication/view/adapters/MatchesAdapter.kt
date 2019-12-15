@@ -1,10 +1,15 @@
 package com.example.fixturesapplication.view.adapters
 
+import android.graphics.drawable.PictureDrawable
+import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.domain.models.MatchStatus
 import com.example.fixturesapplication.R
 import com.example.fixturesapplication.inflate
@@ -16,13 +21,14 @@ import com.like.LikeButton
 import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.match_item.view.*
 import kotlinx.android.synthetic.main.time_item_card.view.*
+import java.io.InputStream
 import javax.inject.Inject
 
 
 private const val TYPE_DATE = 0
 private const val TYPE_GENERAL = 1
 
-class MatchesAdapter @Inject constructor() : RecyclerView.Adapter<BaseMatchesListViewHolder>(){
+class MatchesAdapter @Inject constructor(private val requestBuilder: RequestBuilder<PictureDrawable>) : RecyclerView.Adapter<BaseMatchesListViewHolder>(){
 
     private val matchesList = mutableListOf<ListItem>()
 
@@ -96,6 +102,12 @@ class MatchesAdapter @Inject constructor() : RecyclerView.Adapter<BaseMatchesLis
                 textAwayTeam.text = item.awayTeam.name
 
                 ivLike.isLiked = item.isFavorite
+
+                requestBuilder
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    // SVG cannot be serialized so it's not worth to cache it
+                    .load(Uri.parse(item.awayTeam.teamImage))
+                    .into(teamImg)
 
                 ivLike.setOnLikeListener(object :OnLikeListener{
                     override fun liked(likeButton: LikeButton?) {

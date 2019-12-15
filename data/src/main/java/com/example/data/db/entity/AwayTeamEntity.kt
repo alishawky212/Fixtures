@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class AwayTeamEntity(
     @PrimaryKey
     val awayTeamId: Int,
-    val awayTeamName: String
+    val awayTeamName: String,
+    val awayTeamImage:String
 )
