@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     app:cardBackgroundColor="@color/itemColor"
     app:cardElevation="2dp">
 
@@ -125,19 +124,6 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
-        <com.like.LikeButton
-            android:id="@+id/ivLike"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            app:icon_size="24dp"
-            tools:visibility="gone"
-            android:layout_margin="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:like_drawable="@drawable/ic_like_colored"
-            app:liked="false"
-            app:unlike_drawable="@drawable/ic_like_onlight"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
